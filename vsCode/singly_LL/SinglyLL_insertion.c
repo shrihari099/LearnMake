@@ -1,11 +1,7 @@
 #include <stdio.h>
 #include <malloc.h>
+#include "singly.h"
 
-typedef struct node
-{
-    int data;
-    struct node *next;
-} node;
 
 node *insertNodeBegin(node *ptr)
 {
@@ -50,30 +46,12 @@ node *insertNodeEnd(node *ptr)
     return ptr;
 }
 
-void printLL(node *ptr)
-{
-    printf("Start \n");
-    while (ptr != NULL)
-    {
-
-        printf("%d \n", ptr->data);
-        ptr = ptr->next;
-    }
-    printf("End \n");
-}
-
 void main()
 {
-    node *first = (node *)malloc(sizeof(node));
-    node *second = (node *)malloc(sizeof(node));
-    node *third = (node *)malloc(sizeof(node));
-
-    first->data = 10;
-    first->next = second;
-    second->data = 20;
-    second->next = third;
-    third->data = 30;
-    third->next = NULL;
+    node *first = createNode(10);
+    first->next = createNode(20);
+    first->next->next = createNode(30);
+    first->next->next->next = createNode(40);
 
     // printLL(first);
     first = insertNodeBegin(first);
